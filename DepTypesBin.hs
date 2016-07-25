@@ -81,6 +81,8 @@ type family AddBin a b c where
   AddBin a N0 c = a :+ HCons c HNil 
   AddBin N0 b c = b :+ HCons c HNil
   AddBin N1 N1 T = HCons T (HCons T HNil)
+  AddBin a N1 T = N2 :+ a
+  AddBin N1 b T = N2 :+ b
   AddBin v1 v2 F = v1 :+ v2
   AddBin (HCons T l) (HCons T k) T = HCons T (AddBin l k T)
   AddBin (HCons F l) (HCons T k) T = HCons F (AddBin l k T)
